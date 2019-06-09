@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    webservices webservices;
+
     Button btactualizar;
     adaptardorProducto adapter;
     RecyclerView recyclerView;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btactualizar=findViewById(R.id.btactualizar);
+        webservices=new webservices(this);
 
         //ArrayList<producto> listaproducto=new ArrayList<producto>();
 
@@ -42,5 +45,15 @@ public class MainActivity extends AppCompatActivity {
         adapter = new adaptardorProducto(datospublicos.listaproducto);
         //adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
+    }
+
+    public void btinsertar(View view)
+    {
+        producto p=new producto();
+        p.nombre="producto1";
+        p.precio=100;
+        p.categoria="Eletronico";
+        webservices.insertar_producto(p);
+
     }
 }

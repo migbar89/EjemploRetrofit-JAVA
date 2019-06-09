@@ -16,8 +16,10 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btactualizar" />
+        app:layout_constraintTop_toBottomOf="@+id/btactualizar"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btactualizar"
@@ -27,4 +29,15 @@
         android:text="Actualizar"
         tools:layout_editor_absoluteX="277dp"
         tools:layout_editor_absoluteY="25dp" />
+
+    <Button
+        android:id="@+id/btinsertar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="16dp"
+        android:onClick="btinsertar"
+        android:text="Insertar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

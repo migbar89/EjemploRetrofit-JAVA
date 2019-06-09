@@ -9,6 +9,7 @@ import com.example.ejemploretrofit_java.retrofit.interface_inventario;
 
 import java.util.ArrayList;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,9 +25,29 @@ public class webservices
         this.context = context;
         Toast.makeText(context,"Creando objeto retrofit",Toast.LENGTH_SHORT).show();
 
-        retrofit =new Retrofit.Builder().baseUrl("http://192.168.1.100")
+        retrofit =new Retrofit.Builder().baseUrl("http://192.168.1.14")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+    }
+    public void insertar_producto(producto pro)
+    {
+        interface_inventario interfaz =  retrofit.create(interface_inventario.class);
+        Call<ResponseBody> callproductos=interfaz.InsertarCuota(pro.getNombre(),pro.getPrecio(),pro.getCategoria());
+        callproductos.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if(response.code()==200)
+                {
+                    Toast.makeText(context,"Cuota Insertada Correctamente",Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
     }
 
     public void consultaproductos()
